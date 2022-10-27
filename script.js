@@ -25,7 +25,7 @@ class showBook {
    <td class="title">${book.title}</td>
    <p> by </p>
    <td class="author">${book.author}</td>
-    <td> <button class="remove-btn delete" id=${book.id}>Remove</button> </td>`;
+    <td> <button class="remove-btn delete" data-id=${book.id} >Remove</button> </td>`;
 
     bookListsContainer.appendChild(bookLists);
   }
@@ -55,14 +55,15 @@ class storeBook {
   }
 
   static removeBook(id) {
-    const books = storeBook.getBook();
-    books.forEach((book, index) => {
-      if (book.id === id) {
-        books.splice(index, 1);
-      }
-    });
+    let books = storeBook.getBook();
+     books = books.filter((book) => {
+      return book.id != id} 
+     );
+    console.log(id);
     localStorage.setItem('books', JSON.stringify(books));
   }
+
+   
 }
 
 //error message
@@ -111,8 +112,7 @@ bookListsContainer.addEventListener('click', (e) => {
   showBook.deleteBook(e.target);
 
   storeBook.removeBook(
-    e.target.parentElement.previousElementSibling.textContent
-  );
+    e.target.dataset.id);
 });
 
 // navbar 
