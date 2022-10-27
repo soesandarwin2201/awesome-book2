@@ -8,7 +8,6 @@ class Book {
 
 const bookListsContainer = document.getElementById('book-list-container');
 const form = document.getElementById('form');
-const removeBtn = document.getElementById('remove-btn');
 
 class showBook {
   static displayBooks() {
@@ -16,7 +15,7 @@ class showBook {
     books.forEach((book) => showBook.addedBooks(book));
   }
 
-  //display booklist
+  // display booklist
   static addedBooks(book) {
     const bookListsContainer = document.getElementById('book-list-container');
     const bookLists = document.createElement('tr');
@@ -56,17 +55,12 @@ class storeBook {
 
   static removeBook(id) {
     let books = storeBook.getBook();
-     books = books.filter((book) => {
-      return book.id != id} 
-     );
-    console.log(id);
+    books = books.filter((book) => book.id !== id);
     localStorage.setItem('books', JSON.stringify(books));
   }
-
-   
 }
 
-//error message
+// error message
 const messageContainer = document.getElementById('message-container');
 
 function alertMessage(type, message, time) {
@@ -89,7 +83,7 @@ function alertMessage(type, message, time) {
 
 window.addEventListener('DOMContentLoaded', showBook.displayBooks);
 
-//form event
+// form event
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -97,7 +91,7 @@ form.addEventListener('submit', (e) => {
   const author = document.getElementById('author').value;
 
   if (title === '' || author === '') {
-    alertMessage('error', `<b>Error: </b> Please fill the empty filed!`, 4000);
+    alertMessage('error', '<b>Error: </b> Please fill the empty filed!', 4000);
   } else {
     const book = new Book(title, author);
     showBook.addedBooks(book);
@@ -112,12 +106,12 @@ bookListsContainer.addEventListener('click', (e) => {
   showBook.deleteBook(e.target);
 
   storeBook.removeBook(
-    e.target.dataset.id);
+    e.target.dataset.id,
+  );
 });
 
-// navbar 
+// navbar
 
-const links = document.querySelectorAll('links');
 const list = document.getElementById('list');
 const addForm = document.getElementById('add_book');
 const contact = document.getElementById('contact');
@@ -125,20 +119,19 @@ const listLink = document.getElementById('List-link');
 const addFromLink = document.getElementById('add-link');
 const contactLink = document.getElementById('contact-link');
 
-
-listLink.addEventListener('click',() => {
+listLink.addEventListener('click', () => {
   list.classList.remove('display');
   addForm.classList.add('display');
   contact.classList.add('display');
 });
 
-addFromLink.addEventListener('click',() => {
+addFromLink.addEventListener('click', () => {
   list.classList.add('display');
   addForm.classList.remove('display');
   contact.classList.add('display');
 });
 
-contactLink.addEventListener('click',() => {
+contactLink.addEventListener('click', () => {
   list.classList.add('display');
   addForm.classList.add('display');
   contact.classList.remove('display');
