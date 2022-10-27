@@ -120,19 +120,20 @@ const addFromLink = document.getElementById('add-link');
 const contactLink = document.getElementById('contact-link');
 
 listLink.addEventListener('click', () => {
-  list.classList.remove('display');
-  addForm.classList.add('display');
-  contact.classList.add('display');
+  list.style.display = 'block';
+  addForm.style.display = 'none';
+  contact.style.display = 'none';
+  
 });
 
 addFromLink.addEventListener('click', () => {
-  list.classList.add('display');
-  addForm.classList.remove('display');
-  contact.classList.add('display');
+  list.style.display = 'none';
+  addForm.style.display = 'block';
+  contact.style.display = 'none';
 });
 
 contactLink.addEventListener('click', () => {
-  list.classList.add('display');
-  addForm.classList.add('display');
-  contact.classList.remove('display');
+  list.style.display = 'none';
+  addForm.style.display = 'none';
+  contact.style.display = 'block';
 });

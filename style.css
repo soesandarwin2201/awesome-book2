@@ -126,6 +126,7 @@ table td {
 
 /* book form */
 .addbook {
+  display: none;
   width: 45%;
   height: 50vh;
   margin-top: 15rem;
@@ -223,6 +224,7 @@ input {
 }
 
 .contact-us {
+  display: none;
   flex-direction: column;
   align-items: center;
   margin-top: 10rem;
